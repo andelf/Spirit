@@ -5,11 +5,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>{% block title %}{% endblock %}</title>
+    <title>{{ config.site_description }} - {% block title %}{% endblock %}</title>
     <meta name="description" content="{{ config.site_description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href="{{ STATIC_URL }}spirit/stylesheets/vendors/font-awesome.min.css">
+    <!-- Icons -->
+    <link href="{{ STATIC_URL }}spirit/images/apple-touch-icon.png" rel="apple-touch-icon-precomposed">
+    <link href="{{ STATIC_URL }}spirit/images/apple-touch-icon-114x114.png" sizes="114x114" rel="apple-touch-icon-precomposed">
+
+    <!-- Stylesheet & Favicon -->
+    <link rel="icon" type="image/png" href="{{ STATIC_URL }}spirit/images/favicon.ico" />
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}spirit/stylesheets/vendors/font-awesome.min.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}spirit/stylesheets/tests.css">
 
     <script src="{{ STATIC_URL }}spirit/scripts/jquery.min.js"></script>
@@ -24,7 +31,7 @@
         <script src="{{ STATIC_URL }}spirit/scripts/marked/marked.min.js"></script>
         <script src="{{ STATIC_URL }}spirit/scripts/waypoints/waypoints.min.js"></script>
         <script src="{{ STATIC_URL }}spirit/scripts/storage.js"></script>
-	    <script src="{{ STATIC_URL }}spirit/scripts/editor.js"></script>
+        <script src="{{ STATIC_URL }}spirit/scripts/editor.js"></script>
         <script src="{{ STATIC_URL }}spirit/scripts/like.js"></script>
         <script src="{{ STATIC_URL }}spirit/scripts/bookmark.js"></script>
     {% endif %}
@@ -57,6 +64,17 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script>
     <![endif]-->
+
+	<!-- baidu tongji -->
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?b8738b57361d8862538eaa9010bf5b2e";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
 
   </head>
 

@@ -21,6 +21,11 @@ from ..models.comment import Comment
 from ..forms.user import UserProfileForm, RegistrationForm, LoginForm, EmailChangeForm, ResendActivationForm
 
 
+import logging
+
+logger = logging.getLogger("django")
+
+
 User = get_user_model()
 
 
@@ -53,6 +58,8 @@ def register(request):
 
         if form.is_valid():
             user = form.save()
+            logger.debug("register user:%s",user)
+
             send_activation_email(request, user)
             messages.info(request, _("We have sent you an email so you can activate your account!"))
 
@@ -72,6 +79,8 @@ def registration_activation(request, pk, token):
     user = get_object_or_404(User, pk=pk)
     activation = UserActivationTokenGenerator()
 
+    logger.debug("registration_activation token:%s",token)
+
     if activation.is_valid(user, token):
         user.is_active = True
         user.save()
@@ -90,6 +99,8 @@ def resend_activation_email(request):
 
         if form.is_valid():
             user = form.get_user()
+            logger.debug("register user:%s",user)
+
             send_activation_email(request, user)
 
         messages.info(request, _("If you don't receive an email, please make sure you've entered "

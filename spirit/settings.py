@@ -37,6 +37,11 @@ ST_MARKDOWN_EXT = (
     'spirit.utils.markdown.vimeo',
 )
 
+SECRET_KEY = 'z&amp;0r%^c_=-%+m-sw4qgdr5)mlc=t&amp;dz@@9^$yk^z(2hn6okica'
+
+
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 #
 # Django settings defined below...
@@ -104,3 +109,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'djconfig.context_processors.config',  # django-djconfig
 )
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}

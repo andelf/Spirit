@@ -3,6 +3,9 @@
 from django.core import signing
 from django.utils.encoding import smart_text
 
+import logging
+
+logger = logging.getLogger("django")
 
 class TokenGenerator(object):
 
@@ -23,9 +26,14 @@ class TokenGenerator(object):
 
     def is_valid(self, user, signed_value):
         try:
+
+            logger.debug("user uid1: %s",self._uid(user))
             self.data = signing.loads(signed_value.replace(".", ":"), salt=__name__)
+            logger.debug("user uid2: %s",self.data['uid'])
+
         except signing.BadSignature:
             return False
+
 
         if self.data['uid'] != self._uid(user):
             return False
@@ -36,7 +44,7 @@ class TokenGenerator(object):
 class UserActivationTokenGenerator(TokenGenerator):
 
     def _uid(self, user):
-        return smart_text(user.pk) + smart_text(user.last_login)
+        return smart_text(user.pk) + smart_text(user.last_login.replace(microsecond=0))
 
 
 class UserEmailChangeTokenGenerator(TokenGenerator):
