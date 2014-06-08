@@ -32,7 +32,8 @@ DATABASES = {
 
 
 # == EMAIL ==
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
 #EMAIL_USE_TLS = True
@@ -53,7 +54,6 @@ DEFAULT_FROM_EMAIL = u'Swift China<noreply@swift.sh>'
 #EMAIL_HOST_USER = 'idevchina@qq.com'
 #EMAIL_HOST_PASSWORD = 'password'
 
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #EMAIL_HOST = 'smtp.qq.com'
 #EMAIL_PORT = '25'
 #EMAIL_HOST_USER = 'idevchina@qq.com'
